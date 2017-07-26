@@ -1,0 +1,146 @@
+/* 
+    Created on : Jul 24, 2017, 9:58:42 PM
+    Author     : elbernante
+*/
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    padding-top: 120px;
+    background-color: #FFFFFF;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+p:first-child:first-letter {
+  font-size: 1.5em;
+}
+
+em {
+    font-weight: bold;
+    color: #1DA1F2;
+}
+
+.banner {
+    background-color: #1DA1F2;
+    width: 100%;
+    height: 70px;
+    top: 0;
+    left: 0;
+    position: fixed;
+}
+
+.banner img {
+    width: 100px;
+    height: 100px;
+    top: 20px;
+    left: 50%;
+    margin-left: -50px;
+    position: fixed;
+    border-radius: 50%;
+    padding: 4px;
+    background-color: #FFFFFF;
+}
+
+.container {
+    width: 750px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.panel::before {
+    content: attr(data-title);
+    font-size: 16px;
+    font-weight: bold;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    margin: -10px -10px 20px -10px;
+    padding: 10px;
+    display: block;
+    color: #FFFFFF;
+    background-color: #337ab7;
+}
+
+.panel {
+    background-color: #FFFFFF;
+    border: 1px solid;
+    border-color: #337ab7;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 3px rgba(0,0,0,.05);
+    overflow: scroll;
+}
+
+.courses span {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.movie-detail {
+    display: inline-block;
+    font-size: smaller;
+}
+.movie-detail > dl {
+    margin: 0px;
+}
+
+.movie-detail > dl > dt {
+    display: block;
+    float: left;
+    width: 10%;
+    padding: 0px;
+    margin: 0px;
+    text-align: right;
+    font-weight: bold;
+    color: #80baf0;
+}
+
+.movie-detail > dl > dt:after {
+    content: ": ";
+    padding-right: 5px;
+    
+}
+
+.movie-detail > dl > dd {
+    display: block;
+    float: left;
+    width: 80%;
+    margin: 0px;
+    margin-left: 10px;
+}
+
+.mood {
+    display: block;
+    width: 50%;
+    float: left;
+    text-align: center;
+}
+
+.mood::before {
+    content: attr(data-title);
+    display: block;
+    font-weight: bold;
+    color: #1DA1F2;
+    font-size: 16px;
+}
+
+.mood > img {
+   border: 1px solid;
+   border-color: #1DA1F2;
+   padding: 4px;
+   background-color: #FFFFFF;
+}

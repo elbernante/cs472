@@ -1,0 +1,126 @@
+/* 
+    Created on : Jul 26, 2017, 1:29:00 PM
+    Author     : elbernante
+
+    CS472 - W1D3 Homework: Movie Review
+
+    CSS style for Movie review page
+*/
+
+body {
+    background-image: url(background.png);
+    font-size: 8pt;
+    font-family: Verdana, Tahoma, serif;
+    margin: 0;
+    padding: 0;
+}
+
+.banner {
+    text-align: center;
+    background-image: url(bannerbg.png);
+    background-repeat: repeat-x;
+    height: 53px;
+}
+
+h1 {
+    text-align: center;
+    font: bold 24pt Tahoma,Verdana,serif;
+    text-shadow: 3px 3px #999999;
+}
+
+.content {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 4px solid gray;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.content-left {
+    float: left;
+    width: 550px;
+}
+
+.content-right {
+    float: right;
+    width: 250px;
+}
+
+.content-right, .pagination {
+    background-color: #A2B964;
+}
+
+.rating {
+    background-image: url(rbg.png);
+    background-repeat: repeat-x;
+    font-size: 48pt;
+    font-weight: bold;
+    color: red;
+    height: 83px;
+}
+
+.rating img {
+    vertical-align: bottom;
+}
+
+.critique-column {
+    width: 47%;
+    float: left;
+    margin: 2%;
+    margin-right: 0;
+}
+
+.review {
+    margin-top: 0;
+    font-weight: bold;
+    background-color: #E8DC9B;
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 8px;
+}
+
+.critic {
+    font-style: italic; 
+    margin-bottom: 20pt;
+}
+
+.review, .critic {
+    overflow: hidden;
+}
+
+.review img, .critic img {
+    float: left;
+    margin-right: 5px;
+}
+
+.pagination {
+    clear: both;
+    text-align: center;
+    margin: 0;
+    padding: 5px;
+}
+
+dl {
+    padding-left: 10pt;
+    padding-right: 10pt;
+    font-family: Arial,serif;
+}
+
+dt {
+    font-weight: bold;
+    margin-top: 10pt;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.validator {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    opacity: 0.5;
+}

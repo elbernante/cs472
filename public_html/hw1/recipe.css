@@ -1,0 +1,71 @@
+/* 
+    Created on : Jul 25, 2017, 1:45:42 PM
+    Author     : Peter James Bernante
+
+    CS472 - W1D2 Homework: Recipe
+
+    CSS styles for recipe.html
+*/
+
+body {
+    background-color: white;
+    color: #404040;
+    font-size: 11pt;
+    font-family: Georgia,Garamond,serif;
+    background-image: url(http://www.cs.washington.edu/education/courses/cse190m/09sp/homework/1/silverware.jpg);
+    background-repeat: repeat;
+    background-attachment: fixed;
+}
+
+a, h1, h2 {
+   color: #A4A400;
+}
+
+h1, h2 {
+    background-color: #F0F0F0;
+    font-family: "Lucida Sans Unicode",Helvetica,Arial;  
+    text-align: left;
+    font-size: 18pt;
+    font-weight: normal;
+    text-decoration: underline;
+    letter-spacing: 0.25em;
+    display: table;
+}
+
+h1 {
+    text-align: center;
+    font-size: 22pt;
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+abbr {
+    text-decoration: underline;
+}
+
+span {
+    text-decoration: line-through;
+}
+
+div, pre {
+    text-align: right;
+}
+
+em {
+    font-weight: bold;
+    font-style: normal;
+}
+
+blockquote {
+    font-style: italic;
+    background-color: #FFFFA8;
+}
+
+blockquote em {
+    font-style: inherit;
+}
+
+ul > li {
+    list-style-image: url(http://www.cs.washington.edu/education/courses/cse190m/09sp/homework/1/pie_icon.gif);
+}
