@@ -55,6 +55,7 @@ a:hover {
 
 .title {
     text-align: center;
+    margin-bottom: 5pt;
 }
 
 .item-list {
@@ -108,7 +109,7 @@ a:hover {
 
 .social {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30pt;
 }
 
 .social > ul {
