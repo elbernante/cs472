@@ -9,6 +9,8 @@
 
 body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    padding: 0;
+    margin: 0;
     padding-top: 300px;
     background-color: #FFFFFF;
     font-size: 14px;
@@ -31,26 +33,33 @@ a:hover {
     top: 0;
     left: 0;
     position: absolute;
+    text-align: center;
 }
 
 .banner img {
-    width: 250px;
-    height: 250px;
+    width: 100%;
+    max-width: 250px;
+    max-height: 250px;
     top: 70px;
-    left: 50%;
-    margin-left: -125px;
-    position: absolute;
+    position: relative;
     border-radius: 50%;
     padding: 8px;
     background-color: #FFFFFF;
 }
 
 .container {
-    width: 750px;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+    width: 100%;
+    padding: 0;
+}
+
+@media only screen and (min-width: 600px) {
+    .container {
+        width: 600px;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+    }   
 }
 
 .title {
@@ -59,15 +68,21 @@ a:hover {
 }
 
 .item-list {
-    background-color: aqua;
-    width: 350px;
-    margin-right: auto;
-    margin-left: auto;
+    width: 100%;
     padding: 0;
     list-style-type: none;
     background-color: #fafafa;
     border: 1px solid #cccccc;
-    border-radius: 4px;
+    border-radius: 0px;
+}
+
+@media only screen and (min-width: 600px) {
+    .item-list {
+        width: 350px;
+        margin-right: auto;
+        margin-left: auto;
+        border-radius: 4px;
+    }
 }
 
 .item-list > li {
@@ -80,15 +95,8 @@ a:hover {
     border-color: #1DA1F2;
 }
 
-.item-list > li:first-child {
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-}
-
 .item-list > li:last-child {
     border-bottom: none;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
 }
 
 .item-list > li a {
@@ -116,26 +124,34 @@ a:hover {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    display: inline;
 }
-
 
 .social > ul > li {
-    display: inline;
+    display: block;
     padding: 2px;
-    border-right: 1px solid #cccccc;
     margin: 0px;
-    padding-right: 10px;
-    padding-left: 5px;
 }
 
-.social > ul > li:first-child {
-    padding-left: 0;
-}
+@media only screen and (min-width: 600px) {
+   .social > ul {
+        display: inline;
+    } 
+    
+    .social > ul > li {
+        display: inline;
+        border-right: 1px solid #cccccc;
+        padding-right: 10px;
+        padding-left: 5px;
+    }
 
-.social > ul > li:last-child {
-    padding-right: 0px;
-    border-right-width: 0px;
+    .social > ul > li:first-child {
+        padding-left: 0;
+    }
+
+    .social > ul > li:last-child {
+        padding-right: 0px;
+        border-right-width: 0px;
+    }
 }
 
 .social > ul > li > a {
