@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+    Created on : Jul 27, 2017, 1:54:42 PM
+    Author     : Peter James Bernante
+
+    CS472 - W1D4 Exercise
+-->
+
+<html>
+    <head>
+        <title>Retrieve Grade</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Retrieve your grade</h1>
+
+        <form action="http://mumstudents.org/params.php" method="post">
+            <label>Name: <input type="text" name="name" /></label><br />
+            <label>Student ID: <input type="text" name="studentid" /></label><br />
+            <label>
+                Assignment:
+                <select name="assignment">
+                    <option value="assignment_1">Assignment 1</option>
+                    <option value="assignment_2">Assignment 2</option>
+                    <option value="assignment_2">Assignment 3</option>
+                    <option value="assignment_3">Assignment 4</option>
+                    <option value="assignment_4">Assignment 5</option>
+                </select>
+            </label><br />
+            <fieldset>
+                <legend>Entry Date:</legend>
+                <label><input type="radio" name="entry" value="oct_2016" /> October 2016</label>
+                <label><input type="radio" name="entry" value="jan_2017" /> January 2017</label>
+                <label><input type="radio" name="entry" value="feb_2017" /> February 2017</label>
+                <label><input type="radio" name="entry" value="apr_2017" /> April 2017</label>
+            </fieldset><br />
+            <label><input type="checkbox" name="confirm"/> I confirm that I am looking up my own grade.</label><br /><br /> 
+            <input type="submit" value="Get Grade!" />
+        </form>
+    </body>
+</html>
