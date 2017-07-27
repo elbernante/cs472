@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--
+    Created on : Jul 27, 2017, 1:54:42 PM
+    Author     : Peter James Bernante
+
+    CS472 - W1D4 NerdLuv
+-->
+<html>
+    <head>
+        <title>NerdLuv</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="images/heart.gif" type="image/gif" rel="shortcut icon" />
+        <link href="nerdluv.css" type="text/css" rel="stylesheet" />
+    </head>
+    <body>
+        <header>
+            <img src="images/nerdluv.png" alt="banner logo" /> <br />
+            where meek geeks meet
+        </header>
+        
+        <!-- 
+            NOTE: Per specification, the form is to be submitted to sign-up-submit.php.
+                  However, no such page exists.
+                  
+                  The form is instead submitted to http://mumstudents.org/params.php
+                  which shows the list of submitted form paramters.
+        -->
+        <form action="http://mumstudents.org/params.php" method="post">
+            <fieldset>
+                <legend>New User Signup:</legend>
+                <div>
+                    <strong>Name:</strong>
+                    <input type="text" name="name" size="16" />
+                </div>
+                <div>
+                    <strong>Gender:</strong>
+                    <label><input type="radio" name="gender" value="male" /> Male</label>
+                    <label><input type="radio" name="gender" value="female" checked /> Female</label>
+                </div>
+                <div>
+                    <strong>Age:</strong>
+                    <input type="text" name="age" size="6" maxlength="2" />
+                </div>
+                <div>
+                    <strong>Personality type:</strong>
+                    <label>
+                        <input type="text" name="personality_type" size="6" maxlength="4" />
+                        (<a href="http://www.humanmetrics.com/cgi-win/JTypes2.asp">Don't know your type?</a>)
+                    </label>
+                </div>
+                <div>
+                    <strong>Favorite OS:</strong>
+                    <select name="favorite_os">
+                        <option value="windows" selected>Windows</option>
+                        <option value="mac">Mac OS X</option>
+                        <option value="linux">Linux</option>
+                    </select>
+                </div>
+                <div>
+                    <strong>Seeking age:</strong>
+                    <input type="text" name="min_age" size="6" maxlength="2" placeholder="min" />
+                    to
+                    <input type="text" name="max_age" size="6" maxlength="2" placeholder="max" />
+                </div>
+                <div>
+                    <input type="submit" value="Sign Up"/>
+                </div>
+            </fieldset>
+        </form>
+        
+        <p>
+            This page is for single nerds to meet and date each other!  Type in your personal information and wait for the nerdly luv to begin!  Thank you for using our site.
+        </p>
+
+        <footer>
+            <hr />
+            <p>
+                Results and page (C) Copyright NerdLuv Inc.
+            </p>
+
+            <ul>
+                <li>
+                    <a href="index.php">
+                        <img src="images/back.gif" alt="icon" />
+                        Back to front page
+                    </a>
+                </li>
+            </ul>
+
+            <a href="https://webster.cs.washington.edu/validate-html.php">
+                <img src="images/w3c-html5.png" alt="Valid HTML" />
+            </a>
+            <a href="https://webster.cs.washington.edu/validate-css.php">
+                <img src="images/w3c-css.png" alt="Valid CSS" />
+            </a>
+        </footer>
+    </body>
+</html>
