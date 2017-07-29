@@ -1,0 +1,66 @@
+Peter James Bernante
+CS472
+
+Introduction to Servlets Quiz
+
+
+1. What is the difference between a web server and a web container?
+
+A web server serves static contents while web container is a helper application
+that extends the capabilities of a web server to serve dynamic contents.
+
+
+2. What is a servlet?
+
+A servlet is a server-side java code that can handle HTTP requests and return
+dynamic content. It is a Java class that extends the capabilities of servers
+that host applications access by means of a request-response programming model.
+
+
+3. How do web servers and web containers interact with servlets?
+
+- Servers that support servlets have as a helper app a servlet container.
+- When a request comes to the web server, if the server sees the request is for 
+  a servlet, it passes the request data to the servlet container.
+- The servlet container locates the servlet, creates request and response
+  objects and passes them to the servlet, and returns to the web server the
+  response stream that the servlet produces.
+- The web server sends the response back to the client browser to be rendered.
+
+
+4. Who creates request objects?
+
+Servlet container
+
+
+5. What are the states in the servlet lifecycle?
+
+- Load
+- Create
+- Init
+- Service
+- Destroy
+
+
+6. Who calls init and when?
+
+Servlet container calls init() metod of a servlet. It is called after a servlet
+is instantiated and must be completed before the container can call a service()
+method.
+
+
+7. Which of init, service, and doGet should you override?
+
+doGet
+
+
+8. In what sense are servlets multi-threaded?
+
+There is only 1 instance for each servlet, but a new thread is created for every
+request where a servlet's service() method is called on.
+
+
+9. What are the implications of this for servlet instance variables?
+
+The servlet instance variables may be modified by concurrent threads form
+several requests and therefore may have side effects to other requests. 
