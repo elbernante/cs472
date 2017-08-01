@@ -1,0 +1,70 @@
+Peter James Bernante
+CS472 - W1D6 Quiz
+29 Jul 2017
+
+State Management Quiz
+
+1. Can post requests be bookmarked? What are the problems?
+
+No.  The content of the POST request will be missing. Also, refreshing the page will cause the browser to resubmit the data.
+
+
+2. What is the purpose of request dispatching?
+
+Request dispatching allows one container-managed component to call another. It is a way of servlet collaboration.
+
+
+3. What is the difference between redirect and request dispatch?
+
+A request dispatch does the work on server side, while redirect makes the client do the work.
+
+
+4. What is an attribute?
+
+An attribute is an object set (referred to as bound) into one of three servlet API objects - ServletContext, HttpServletRequest (or ServletRequest), or HttpSession. It is a key-value pair where the key is a string and the value can be any object.
+
+
+5. What is the difference between attributes and parameters?
+
+Parameters are created on client side while attributes are created on server side. Parameters can only return strings but parameters can be any object.
+
+
+6. What are dangers of using attributes?
+
+Attributes in session and application scope are not thread-safe. There maybe multiple threads spawned from different requests that access session and application attributes concurrently, which may cause unexpected side effects.
+
+
+7. What does it mean to say that http is stateless? Give an example of a stateful protocol.
+
+HTTP protocol does not keep track, or does not have knowledge of the previous requests.
+An example of a stateful protocol is TCP, in which it keeps track of the packets received in order to be reassemble them at the destination.
+
+
+8. Give 5 different methods for maintaining state information (count each attribute scope as one method).
+
+1. request scope
+2. session scope
+3. application scope
+4. cookies
+5. hidden fields
+
+
+9. How long does a session last?
+
+It lasts until the client side closes the browser or clears the cookie, or until it reaches the expiration time as declared in web.xml configuration.
+
+
+
+10. What is a cookie, and how long does a cookie last?
+
+A cookie is a key-value pair stored in the client side. It is one way to remember the state. It can be either temporary, which lasts until the client closes the browser, or permanent with a set expiration period.
+
+
+11. What is the purpose of URL rewriting?
+
+URL rewriting is an alternative mechanism to maintain sessions for clients that don’t accept cookies.
+
+
+12. Why does the request attribute report ‘null’ for the maintaining state demo?
+
+Because request scope is destroyed after every request and does not carry over to succeeding requests.
