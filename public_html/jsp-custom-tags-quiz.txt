@@ -1,0 +1,57 @@
+Peter James Bernante
+CS472 - W2D2 Quiz
+1 Aug 2017
+
+JSP Custom Tags Quiz
+====================
+
+1. Rewrite the JSP page in the first demo (forEach) to use scripting instead of the JSTL
+forEach.
+
+<%
+    Student [] students = (Student []) request.getAttribute("students");
+    for (int i = 0; i < students.length; i++) {
+        Student student = students[i];
+        out.print("<tr>");
+        out.print("<td>" + student.getName() + "</td>");
+        out.print("<td>" + student.getAge() + "</td>");
+        out.print("</tr>");
+    }
+%>
+
+
+2. How do custom tags relate to JSTL?
+
+JSTL are custom tags for frequently used operations, that it has become an standard part of JSP. JSTL are impleted as custom tags.
+
+
+3. What is the role of the URI in the TLD and the taglib directive?
+
+URI allows the container to find the location of TLD.
+
+
+4. What is a tag handler class?
+
+A handler class is a Java class that is the implementation of a custom tag.
+
+
+5. What is the role of attribute setters in a tag handler class?
+
+Attribute setters allows the container to inject values for each attribute in a custome tag.
+
+
+6. What is the role of the doTag() method in a tag handler class?
+
+doTag() is the method that is invoked to generate HTML output for a custom tag.
+
+
+7. What does the operation getJspContext().getOut().write(“Hi Bob”) do when called in
+a doTag() method?
+
+It outputs "Hi bob" string in the page.
+
+
+8. What does the operation getJspBody().invoke(null) do when called in a doTag()
+method? 
+
+Executes the fragment and directs all output to getJspContext().getOut().
