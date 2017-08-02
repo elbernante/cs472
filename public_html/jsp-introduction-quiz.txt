@@ -1,0 +1,102 @@
+Peter James Bernante
+CS472 - W2D1 Quiz
+31 Jul 2017
+
+JSP Introduction Quiz
+
+1. What is the main value of Java Server Pages?
+
+Separates display from processing, i.e., separates HTML from java. It makes writing HTML pages easier without having to rely on java strings.
+
+
+2. How are JSP pages related to servlets?
+
+JSP pages are transformed to servlets.
+
+
+3. How are JSP pages related to HTML?
+
+JSP pages are HTML with a little bit of Java mixed in.
+
+
+4. Give an example of a JSP scriptlet and show how it will look in the JSP servlet.
+
+JSP scriplet:
+-------------
+<% String greeting = "Hello World"; %>
+
+
+JSP servlet:
+------------
+String greeting = "Hello World"; 
+
+greeting is a local variable;
+
+
+5. Give an example of a JSP declaration and show how it will look in the JSP servlet.
+
+JSP declaration:
+----------------
+<%! int i = 100; %>
+
+
+JSP servlet:
+------------
+int i = 100;
+
+
+i is declared as instance variable.
+
+
+6. Give an example of a JSP comment and show how it will look in the JSP servlet.
+
+JSP comment:
+------------
+<%-- This is a comment --%>
+
+JSP servlet:
+------------
+The comment will not be shown in the servlet.
+It will also not be shown in the generated HTML.
+
+
+7. Give an example of a JSP expression and show how it will look in the JSP servlet.
+
+JSP expression:
+---------------
+<%= 10 + 2 =>
+
+JSP servlet:
+------------
+out.print( 10 + 2 );
+
+8. Give an example of a JSP directive and show how it will look in the JSP servlet.
+
+JSP directive:
+--------------
+<%@page import="mum.cs472.model.Quiz" %>
+
+JSP servlet:
+------------
+import mum.cs472.model.Quiz;
+
+
+9. Explain how an EL expression is evaluated.
+
+EL expression is evaluated systematically in the following order:
+1. page scope
+2. request scope
+3. session scope
+4. application scope
+
+If the expression is not found in the lower scope, the container searches for it in the next higher scope. If it can't be found anywhere, then it is ignored.
+
+
+10. Explain how servlet attributes are involved in EL expressions.
+
+Servlets set the attributes in a particular scopes. The servlet then dispatch the request to a JSP, from which EL expressions are evaluated based on the attributes that were set by the servlet.
+
+
+11. Explain how servlets and JSPs use request dispatch to interact.
+
+Servlets handles the business logic and set attributes. After which, it forwards the request using a request dispatch to JSP.
