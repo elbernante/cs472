@@ -8,16 +8,12 @@ JSP Custom Tags Quiz
 1. Rewrite the JSP page in the first demo (forEach) to use scripting instead of the JSTL
 forEach.
 
-<%
-    Student [] students = (Student []) request.getAttribute("students");
-    for (int i = 0; i < students.length; i++) {
-        Student student = students[i];
-        out.print("<tr>");
-        out.print("<td>" + student.getName() + "</td>");
-        out.print("<td>" + student.getAge() + "</td>");
-        out.print("</tr>");
-    }
-%>
+<% for (Student student : (Student []) request.getAttribute("students")) { %>
+    <tr>
+        <td><%= student.getName() %></td>
+        <td><%= student.getAge() %></td>
+    </tr>
+<% } %>
 
 
 2. How do custom tags relate to JSTL?
