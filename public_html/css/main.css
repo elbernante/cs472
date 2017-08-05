@@ -11,11 +11,17 @@ body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     padding: 0;
     margin: 0;
-    padding-top: 300px;
+    padding-top: 450px;
     background-color: #FFFFFF;
     font-size: 14px;
     line-height: 1.42857143;
     color: #333;
+}
+
+@media only screen and (min-width: 600px) {
+    body {
+        padding-top: 400px;
+    }
 }
 
 a {
@@ -32,25 +38,60 @@ a:hover {
     height: 200px;
     top: 0;
     left: 0;
-    position: absolute;
-    text-align: center;
+    position: fixed;
+    transition: all 0.5s ease-in-out;
 }
 
 .banner img {
-    width: 100%;
-    max-width: 250px;
-    max-height: 250px;
-    top: 70px;
-    position: relative;
+    height: 250px;
+    width: 250px;
     border-radius: 50%;
     padding: 8px;
     background-color: #FFFFFF;
+    display: block;
+    position: absolute;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.5s ease-in-out;
+}
+
+.banner .avatar {
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 70px;
+    transition: all 0.5s ease-in-out;
+}
+
+.shrink {
+    height: 70px;
+}
+
+.shrink .avatar {
+    top: 20px;
+}
+
+.shrink img {
+    height: 100px;
+    width: 100px;
+    padding: 4px;
+}
+
+.side img {
+    margin-left: 0;
+    transform: translateX(0);
+    border-radius: 10px;
 }
 
 .container {
     width: 100%;
     padding: 0;
 }
+
+
 
 @media only screen and (min-width: 600px) {
     .container {
@@ -64,7 +105,26 @@ a:hover {
 
 .title {
     text-align: center;
-    margin-bottom: 5pt;
+    margin: 0;
+    padding: 0;
+    transition: all 0.5s ease-in-out;
+    display: inline-block;
+    position: absolute;
+    white-space: nowrap;
+    top: 250px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.shrink .title {
+    top: 100px;
+}
+
+.side .title {
+    margin-left: 105px;
+    transform: translateX(0);
+    top: 8px;
+    color: #FFF;
 }
 
 .item-list {
@@ -89,14 +149,14 @@ a:hover {
     border-bottom: 1px solid #cccccc;
 }
 
-.item-list > li:hover {
-    background-color: #1DA1F2;
-    color: white;
-    border-color: #1DA1F2;
-}
-
 .item-list > li:last-child {
     border-bottom: none;
+}
+
+.item-list > li:hover {
+    background-color: #1DA1F2;
+    border-color: #1DA1F2;
+    color: white;
 }
 
 .item-list > li a {
@@ -104,6 +164,8 @@ a:hover {
     color: #333;
     padding: 8px 16px;
     text-decoration: none;
+    transition: all 0.5s ease-in-out;
+    transition: color 0s;
 }
 
 .item-list > li a:hover {
@@ -116,8 +178,16 @@ a:hover {
 }
 
 .social {
-    text-align: center;
-    margin-bottom: 30pt;
+    position: absolute;
+    top: 290px;
+    width: 200px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.5s ease-in-out;
+}
+
+.shrink .social {
+    top: 140px;
 }
 
 .social > ul {
@@ -130,11 +200,16 @@ a:hover {
     display: block;
     padding: 2px;
     margin: 0px;
+    transition: all 0.5s ease-in-out;
 }
 
 @media only screen and (min-width: 600px) {
+    .social {
+        width: 580px;
+    }
+    
    .social > ul {
-        display: inline;
+        display: inline-block;
     } 
     
     .social > ul > li {
@@ -157,6 +232,23 @@ a:hover {
 .social > ul > li > a {
     display: inline-block;
     color: #1DA1F2;
+    overflow: hidden;
+    position: relative;
+    top: 5px;
+    white-space: nowrap;
+    transition: all 0.5s ease-in-out;
+}
+
+a.social-linkedin {
+    width: 200px;
+}
+
+a.social-github {
+    width: 170px;
+}
+
+a.social-twitter {
+    width: 170px;
 }
 
 .social > ul > li > a::before {
@@ -167,6 +259,7 @@ a:hover {
     background-size: cover;
     margin-right: 5px;
     vertical-align: middle;
+    transition: all 0.5s ease-in-out;
 }
 
 a.social-linkedin::before {
@@ -179,4 +272,38 @@ a.social-github::before {
 
 a.social-twitter::before {
     background-image: url(../images/twitter_sm.png);
+}
+
+
+.side .social {
+    width: 100%;
+    top: 50px;
+    margin-left: 100px;
+    transform: translateX(0);
+    background-color: #FFF;
+}
+
+.side .social > ul > li {
+    display: inline;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+.side .social > ul > li > a {
+    width: 35px;
+    height: 35px;
+}
+
+.side .social > ul > li > a::before {
+
+    height: 30px;
+    width: 30px;
+}
+
+.side .social > ul > li {
+    border-width: 0px;
+    transition: opacity 0.2s;
+}
+
+.side .social > ul > li:hover {
+    opacity: 0.5;
 }
