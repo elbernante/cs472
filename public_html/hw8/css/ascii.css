@@ -1,0 +1,53 @@
+/* 
+    Created on : Aug 7, 2017, 10:33:44 AM
+    Author     : elbernante
+
+   CS472 - W3D1 - JavaScript and ASCII Animation Webpage
+
+    CSS style definitions
+*/
+
+body {
+    background-color: #CCCCFF;
+    font: bold 14pt sans-serif;
+}
+
+h1 {
+    font-size: 32pt;
+    text-align: center;
+    margin: 0;
+}
+
+#textView {
+    width: 90%;
+    height: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font: bold 12pt monospace;
+}
+
+.controls-area {
+    text-align: center;
+}
+
+.controls-area fieldset {
+    display: inline-block;
+    border: 5px solid black;
+    vertical-align: top;
+}
+
+.controls-area fieldset legend {
+    text-align: left;
+}
+
+.controls-area fieldset button,
+.controls-area fieldset select{
+    font: inherit;
+}
+
+.validator a {
+    float: right;
+    clear: right;
+    text-decoration: none;
+}
