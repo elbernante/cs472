@@ -1,0 +1,57 @@
+Peter James Bernante
+CS472 - W2D6 Lab
+05 Aug 2017
+
+
+Javascript Exercises
+====================
+
+1. What is the difference between the following 2 statements?
+    setTimeout(booyah, 2000);
+    setTimeout(booyah(), 2000);
+
+
+    Answer:
+    -------
+    The first booyah function will execute after 2 seconds, while the second booyah function will execute immediately.
+
+
+
+2. What do the following 2 alerts display (answer without running the code)?
+
+    var myfunc = function(a, x) {
+        return a * x;
+    };
+
+    var x = myfunc(2, 3);
+    var y = myfunc;
+    alert(x);
+    alert(y(2,3));
+
+    
+    Answer:
+    -------
+    Both alerts will display 6.
+
+
+    
+3. Write functions booyah1 and booyah2 so that in both cases below, an alert box comes up after 2 seconds that says "BOOYAH!"
+
+    setTimeout(booyah1, 2000);
+    setTimeout(booyah2(), 2000);
+
+    Answer:
+    -------
+    function booyah1() {
+        alert("BOOYAH");
+    }
+
+    function booyah2() {
+        return function() {
+            alert("BOOYAH");
+        };
+    }
+
+
+
+4. What is "Unobtrusive Javascript"? What is the practical application of Unobtrusive Javascript (and the reasons for using it)?
