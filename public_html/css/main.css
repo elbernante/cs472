@@ -39,7 +39,7 @@ a:hover {
     top: 0;
     left: 0;
     position: fixed;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .banner img {
@@ -52,7 +52,7 @@ a:hover {
     position: absolute;
     margin-left: 50%;
     transform: translateX(-50%);
-    transition: all 0.5s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .banner .avatar {
@@ -63,7 +63,7 @@ a:hover {
     margin-right: auto;
     position: relative;
     top: 70px;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .shrink {
@@ -107,7 +107,7 @@ a:hover {
     text-align: center;
     margin: 0;
     padding: 0;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.3s ease-in-out;
     display: inline-block;
     position: absolute;
     white-space: nowrap;
@@ -164,7 +164,7 @@ a:hover {
     color: #333;
     padding: 8px 16px;
     text-decoration: none;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.3s ease-in-out;
     transition: color 0s;
 }
 
@@ -183,7 +183,7 @@ a:hover {
     width: 200px;
     margin-left: 50%;
     transform: translateX(-50%);
-    transition: all 0.5s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .shrink .social {
@@ -200,7 +200,7 @@ a:hover {
     display: block;
     padding: 2px;
     margin: 0px;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 @media only screen and (min-width: 600px) {
@@ -236,7 +236,7 @@ a:hover {
     position: relative;
     top: 5px;
     white-space: nowrap;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 a.social-linkedin {
@@ -259,7 +259,7 @@ a.social-twitter {
     background-size: cover;
     margin-right: 5px;
     vertical-align: middle;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 a.social-linkedin::before {
