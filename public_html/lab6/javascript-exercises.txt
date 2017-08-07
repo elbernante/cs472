@@ -55,3 +55,9 @@ Javascript Exercises
 
 
 4. What is "Unobtrusive Javascript"? What is the practical application of Unobtrusive Javascript (and the reasons for using it)?
+
+    Answer:
+    -------
+    Unobtrusive JavaScript is a general approach to the use of JavaScript in web pages where JavaScript codes are separated from HTML codes, rather than combined in HTML.
+
+    A practical use of Unobtrusive JavaScript is it allows separation of content and behavior, leading to more organized and maintainable codes.
