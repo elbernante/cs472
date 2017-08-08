@@ -1,0 +1,112 @@
+Peter James Bernante
+CS472 - W3D2 Exercise
+08 Aug 2017
+
+JavaScript Scope Exercises
+==========================
+
+1. Determine what this Javascript code will print out (without running it):
+    x = 1;
+    var a = 5;
+    var b = 10;
+    var c = function (a, b, c) {
+        var x = 10;
+        document.write(x);
+        document.write(a);
+        var f = function (a, b, c) {
+            b = a;
+            document.write(b);
+            b = c;
+            var x = 5;
+        }
+        f(a, b, c);
+        document.write(b);
+    }
+    c(8, 9, 10);
+    document.write(b);
+    document.write(x);
+    }
+
+
+    Answer:
+    -------
+    10889101
+
+  
+
+2. What is the difference between a method and function?
+
+    Answer:
+    -------
+    A method is a function that is associated with an object.
+
+
+    
+3. What does 'this' refer to when used in a Java method?
+
+    Answer:
+    -------
+    It points to the object associated with the Java method.
+
+
+
+4. What does 'this' refer to when used in a JavaScript method?
+
+    Answer:
+    -------
+    It points to the object associated with the JavaScript method.
+
+
+
+5. What does 'this' refer to when used in a JavaScript constructor function?
+
+    Answer:
+    -------
+    It points to the newly created object.
+
+
+
+6. Assume object x is the prototype for object y in Javascript. Object x has a method f( ) containing keyword 'this'.
+When f is called by x.f( ), what does 'this' refer to?
+
+    Answer:
+    -------
+    Object x
+
+
+
+7. What is a free variable in JavaScript?
+
+    Answer:
+    -------
+    Free variable is a variable referred to by a function that is not one of its parameters or local variables.
+
+
+
+8. Create an object that has properties with name = "fred" and major="music" and a property that is a function that takes 2 numbers and returns the smallest of the two, or the square of the two if they are equal.
+
+    Answer:
+    -------
+    var obj = {
+        name: "fred",
+        major: "music",
+        func: function (a, b) {
+            return (a === b) ? a * a : Math.min(a, b);
+        }
+    };
+
+
+
+9. Write Javascript code for creating three Employee objects using the "new" keyword and a constructor function. Employee objects have the following fields: name, salary, position.
+
+    Answer:
+    -------
+    var Employee = function(name, salary, position) {
+        this.name = name;
+        this.salary = salary;
+        this.position = position;
+    };
+
+    var emp1 = new Employee("John", 100000, "CEO");
+    var emp2 = new Employee("Jane", 200000, "COO");
+    var emp3 = new Employee("Ryan", 300000, "CFO");
