@@ -38,7 +38,7 @@ JavaScript Scope Exercises
 
     Answer:
     -------
-    A method is a function that is associated with an object.
+    A method is a function that is associated with an object. Function, on itself, is not associated with any object.
 
 
     
