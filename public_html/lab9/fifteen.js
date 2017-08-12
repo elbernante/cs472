@@ -1,186 +1,135 @@
 "use strict";
 
 $(function () {
-    var toXY = function (i) {
-        return {x: i % 4, y: Math.floor(i / 4)}; 
-    }; 
+    var B_WIDTH = 4,
+        blank_idx = 15,
+        tileClick;
     
-    var toI = function (p) {
-        return p.x + p.y * 4;
+    // Converts an index to a(x, y) coordinate or point
+    var toXY = function (i, toPoint) {
+        var f = toPoint ? 100 : 1;
+        return {x: (i % B_WIDTH) * f, 
+                y: Math.floor(i / B_WIDTH) * f};
     };
     
-    // Tile class - represents a single tile in the puzzle board
-    var Tile = function (idx, val, elem, callback) {
-        this.val = val;
-        this.elem = elem;
-        this.idx = idx;
-        this.movable = false;
-
-        if (this.elem) {
-            var p = this.getXY();
-            this.elem.addClass("puzzlepiece");
-            this.elem.css("background-position", -p.x + "px " + (-p.y) + "px");
-            this.updateDisplay();
-            
-            var self = this;
-            this.elem.on("click", function () {
-                callback(self);
-            });
-        }
+    // Converts an (x, y) coordinate to index;
+    var toIndex = function (p) {
+        return p.x + p.y * B_WIDTH;
     };
     
-    // Sets or returns the current index of this tile
-    Tile.prototype.index = function (index) {
-        if (index === undefined) {
-            return this.idx;
-        }
-        this.idx = index;
-        this.updateDisplay();
+    // Moves a tile to correct location based on index
+    var moveTo = function ($e, idx) {
+        var p = toXY(idx, true);
+        $e.attr("data-idx", idx).css({left: p.x + "px", top: p.y + "px"});        
     };
     
-    // Sets or returns the movable state of this tile
-    Tile.prototype.isMovable = function (canMove) {
-        if (canMove === undefined) {
-            return this.movable;
-        }
-        this.movable = canMove;
-        this.elem.toggleClass("movablepiece", canMove);
-    };
-    
-    // Returns the (x, y) coordinate of this tile
-    Tile.prototype.getXY = function () {
-        var p = toXY(this.idx);
-        return { x: p.x * 100, y: p.y * 100 };
-    };
-    
-    // Updates the position of the tile in the screen
-    Tile.prototype.updateDisplay = function () {
-        if (this.elem) {
-            var p = this.getXY();
-            this.elem.css({left: p.x + "px", top: p.y + "px"});
-        }
-    };
-    
-    
-    // Puzzle class - represent the puzzle board
-    var Puzzle = function (boardId) {
-        this.boardId = boardId;
-        this.tiles = [];
-        this.movables = [];
-        
-        var self = this;
-        $(this.boardId).find("div").each(function (i) {
-            self.tiles.push(new Tile(i, i + 1, $(this), function (e) {
-                self.tileClick(e);
-            }));
-        });
-        
-        this.space = new Tile(this.tiles.length, 0);
-        this.tiles.push(this.space);
-        this.updateMovables();
-    };
-
-    // Swaps the positions of 2 tiles
-    Puzzle.prototype.swap = function (i, j) {
-        var t = this.tiles,
-            m = t[i].index(),
-            n = t[j].index(),
-            temp = t[i];
-    
-        t[i] = t[j];
-        t[j] = temp;
-        t[i].index(m);
-        t[j].index(n);
-    };
-    
-    
-    // Shuffles the tiles
-    Puzzle.prototype.shuffle = function () {
-        var c = this.tiles.length;
-        while (c-- > 1) {
-            this.swap(c, Math.floor(Math.random() * (c + 1)));
-        }
-
-        if (!this.isSolvable()) {
-            var t = this.tiles,
-                i = (t[0].val && t[1].val) ? 0 : t.length - 2;
-            this.swap(i, i + 1);
-        }
-
-        this.updateMovables();
-    };
-    
-    // Sets/Removes movable states of tiles around the blank tile
-    Puzzle.prototype.updateMovables = function () {
-        var self = this,
-            i = this.space.index(),
-            setM = function (v) {
-                self.movables.forEach(function (e) {
-                    e.isMovable(v);
-                });        
-            };
-        
-        
-        setM(false);
-        this.movables = this.getNeighbors(i).map(function (idx) {
-            return self.tiles[idx];
-        });
-        setM(true);
-    };
-    
-    // Checks if the board is solvable by determining
-    // its total iversions and polarity
-    Puzzle.prototype.isSolvable = function () {
-        var inversions = this.tiles.reduce(function (acc, e, i, a) {
-            return acc + a.slice(i + 1).reduce(function (acc2, e2) {
-                return acc2 + (e2.val > 0 && e2.val < e.val) ? 1 : 0;
-            } , 0);
-        }, 0);
-        
-        var h = Math.sqrt(this.tiles.length),
-            r = toXY(this.space.index()).y + 1;
-
-        return (inversions + h - r) % 2 === 0;
-    };
-    
-    // Checks if the board is solved
-    Puzzle.prototype.isSolved = function () {
-        return this.tiles.every(function (e, i) {
-            return !e.val || i + 1 === e.val;
-        });
-    };
-    
-    // Returns the top, left, right, and down adjacent tiles
-    Puzzle.prototype.getNeighbors = function (i) {
-        var p = toXY(i),
-            w = Math.sqrt(this.tiles.length),
+    // Returns the indexes movable tiles
+    var getMovables = function () {
+        var p = toXY(blank_idx),
             n = [{x: p.x, y: p.y - 1},
                  {x: p.x - 1, y: p.y}, 
                  {x: p.x + 1, y: p.y},
                  {x: p.x, y: p.y + 1}];
 
         return n.filter(function (o) {
-            return o.x >= 0 && o.y >= 0 && o.x < w && o.y < w;
-        }).map(toI);
+            return o.x >= 0 && o.y >= 0 && o.x < B_WIDTH && o.y < B_WIDTH;
+        }).map(toIndex);  
     };
     
-    // Event handler when a tile is clicked
-    Puzzle.prototype.tileClick = function (e) {
-        if (e.isMovable()) {
-            this.swap(this.space.index(), e.index());
-            this.updateMovables();
-            
-            if (this.isSolved()) {
-                setTimeout(function () {
-                    alert("Congratulations! You solved the puzzle!");
-                }, 150);
-            }
+    // Updates the movable tiles
+    var updateMovables = function () {
+        $(".movablepiece").removeClass("movablepiece").off("click", tileClick);
+        getMovables().forEach(function (idx) {
+            var $e = $(".puzzlepiece[data-idx=" + idx + "]");
+            $e.addClass("movablepiece").on("click", tileClick);
+        });
+    };
+    
+    // Checks if the puzzle is solved
+    var isSolved = function () {
+        return $(".puzzlepiece").get().every(function (e) {
+            return $(e).data("value") === parseInt($(e).attr("data-idx")) + 1;
+        });
+    };
+    
+    // Click event handler of tiles
+    var tileClick = function () {
+        var idx = $(this).attr("data-idx");
+        moveTo($(this), blank_idx);
+        blank_idx = idx;
+        updateMovables();
+        if (isSolved()) {
+            setTimeout(function () {
+                alert("Congratulations! You solved the puzzle!");
+            }, 150);
         }
     };
+
+    // Checks if a puzzle board arrangement is solvable based
+    // inversions and polarity
+    var isSolvable = function (tiles) {
+        var blankTile = tiles.findIndex(function (e) {
+            return e.val === 0;
+        });
+        
+        var inversions = tiles.reduce(function (acc, e, i, a) {
+            return acc + a.slice(i + 1).reduce(function (cnt, e2) {
+                return cnt + ((e2.val > 0 && e2.val < e.val) ? 1 : 0);
+            }, 0);
+        }, 0);
+        
+        return (inversions - toXY(blankTile).y + 1) % 2 === 0;
+    };
     
-    var puzzle = new Puzzle("#puzzlearea");
+    // Shuffles the tiles in the puzzle board
+    var shuffle = function () {
+        var tiles = [],
+            swap = function (arr, i, j) {
+                var tmp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = tmp;
+            };
+        // Get current tile locations
+        $("#puzzlearea div").each(function () {
+            tiles[$(this).attr("data-idx")] = {val: $(this).data("value"),
+                                               e: $(this)};
+        });
+        tiles[blank_idx] = {val: 0, e: null};
+        
+        // Randomly shuffle tiles
+        var j = tiles.length;
+        while (j-- > 1) {
+            swap(tiles, j, Math.floor(Math.random() * (j + 1)));
+        }
+        
+        // Apply correction if tile arrangement is not solvable
+        if (!isSolvable(tiles)) {
+            var i = (tiles[0].val && tiles[1].val) ? 0 : tiles.length - 2;
+            swap(tiles, i, i + 1);
+        }
+        
+        // Update new location of tiles
+        tiles.forEach(function (e, i) {
+            if (e.val) {
+                moveTo(e.e, i);
+            } else {
+                blank_idx = i;
+            }
+        });
+        
+        updateMovables();
+    };
     
-    $("#shufflebutton").on("click", function () {
-        puzzle.shuffle();
-    });
+    // Initilize puzzle board
+    (function () {
+        $("#puzzlearea div").each(function (i, e) {
+            var p = toXY(i, true);
+            $(e).data("value", i + 1).addClass("puzzlepiece");
+            $(e).css("background-position", -p.x + "px " + -p.y + "px");
+            moveTo($(e), i);
+        });
+        updateMovables();
+    })();
+    
+    $("#shufflebutton").on("click", shuffle);
 });
