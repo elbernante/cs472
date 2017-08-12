@@ -1,0 +1,30 @@
+Peter James Bernante
+CS472 - W3D4 Quiz
+12 Aug 2017
+
+CS472 jQuery Quiz III
+=====================
+
+1. Which, if any, of the following 3 code fragments are equivalent? Explain why they are different, if they are. Explain why they can have different parameters and be equivalent, if they are equivalent.
+
+    //code fragment 1
+    $("li").each(function(idx, e) {
+     $(e).css("color", "yellow"); });
+    //code fragment 2
+    $("li").each(function() {
+     $(this).css("color", "yellow"); });
+    //code fragment 3
+    $("li").each(function(idx) {
+     $(this).css("color", "yellow"); });
+
+    Answer:
+    ------
+
+    All 3 code fragments are equivalent. the 2nd and 3rd snippets does not make use any of the parameters. The "e" parameter in the first snippet and "this" in the 2nd and 3rd snippet both refer to the DOM element currently being processed  .
+
+
+2. Write a jQuery expression to find all divs on a page that include an unordered list in them, and make their text color be blue.
+
+    Answer:
+    -------
+    $("div:has(ul)").css("color", "blue");
