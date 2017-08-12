@@ -48,7 +48,7 @@ $(function () {
     // Checks if the puzzle is solved
     var isSolved = function () {
         return $(".puzzlepiece").get().every(function (e) {
-            return $(e).data("value") === parseInt($(e).attr("data-idx")) + 1;
+            return $(e).data("value") === parseInt($(e).attr("data-idx"), 10) + 1;
         });
     };
     
