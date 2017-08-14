@@ -1,4 +1,9 @@
 "use strict";
+/**
+ * Peter James Bernante
+ * CS472 - W3D4: DOM and Events: 15 Puzzle
+ * 11 Aug 2017
+ */
 
 $(function () {
     var B_WIDTH = 4,
