@@ -8,6 +8,7 @@
  */
 
 $(function () {
+    var WORDNIK_API_KEY = "dbe49202a9e4589c5840a01b6de0fb3a4f5b13b7c2c73ad7d";
     
     // Initialize custom search input control
     (function () {
@@ -150,7 +151,7 @@ $(function () {
                     maxLength: -1,
                     skip: 0,
                     limit: 7,
-                    api_key: "a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5"
+                    api_key: WORDNIK_API_KEY
                 }, function (data) {
                     data = data.searchResults.map(function (e) {
                         return e.word.toLowerCase();
@@ -195,7 +196,7 @@ $(function () {
             includeRelated: false,
             useCanonical: false,
             includeTags: false,
-            api_key: "a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5"
+            api_key: WORDNIK_API_KEY
         }, function (data) {
             var $r = $("#result");
             
