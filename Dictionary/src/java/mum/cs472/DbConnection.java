@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -40,22 +42,46 @@ public class DbConnection {
     }
     
     public Word getWord(String word) {
-        String q = "SELECT wordtype, definition FROM entries WHERE word = ?";
+        Word result = new Word(word);
+
+        query("SELECT wordtype, definition FROM entries WHERE word = ?",
+                stmt -> stmt.setString(1, word.toLowerCase()),
+                rs -> {
+                    while (rs.next()) {
+                        result.addDifition(rs.getString("wordtype"),
+                                rs.getString("definition"));
+                    }
+                });
+
+        return result;
+    }
+    
+    public List<String> getPartialMatch(String word) {
+        List<String> matches = new ArrayList<>();
+
+        query("SELECT DISTINCT word FROM entries where word LIKE ? ORDER BY word ASC LIMIT 7",
+                stmt -> stmt.setString(1, word.toLowerCase() + "%"),
+                rs -> {
+                    while (rs.next()) {
+                        matches.add(rs.getString("word"));
+                    }
+                });
+
+        return matches;
+    }
+    
+    private void query(String query, 
+            SqlConusmer<PreparedStatement> setStament, 
+            SqlConusmer<ResultSet> result) {
+        
         PreparedStatement stmt = null;
         ResultSet rs = null;
         
-        word = word.toLowerCase();
-        Word result = new Word(word);
-        
         try {
-            stmt = conn.prepareStatement(q);
-            stmt.setString(1, word);
+            stmt = conn.prepareStatement(query);
+            setStament.accept(stmt);
             rs = stmt.executeQuery();
-            
-            while(rs.next()) {
-                result.addDifition(rs.getString("wordtype"), rs.getString("definition"));
-            }
-            
+            result.accept(rs);
         } catch (SQLException ex) {
             Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -68,7 +94,9 @@ public class DbConnection {
                 }
             } catch (SQLException ex) { /* Ignore errors */ }
         }
-        
-        return result;
+    }
+    
+    private static interface SqlConusmer <T> {
+        void accept(T t) throws SQLException;
     }
 }
