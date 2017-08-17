@@ -117,7 +117,7 @@ $(function () {
                 isComplete = false;
                 
                 // Allow short delay to prevent ugly glitch when
-                // ajax returns very
+                // ajax returns very fast
                 setTimeout(function () {
                     if (!isComplete) {
                         $("body").addClass("no-scroll");
@@ -154,7 +154,7 @@ $(function () {
                     api_key: WORDNIK_API_KEY
                 }, function (data) {
                     data = data.searchResults.map(function (e) {
-                        return e.word.toLowerCase();
+                        return e.word;
                     });                    
                     data = Array.from(new Set(data));
                     cache[val] = data;
@@ -232,4 +232,7 @@ $(function () {
     (function () {
         $("#search").focus();
     })();
+
+    // Preload loading image
+    (new Image()).src = "images/loading.gif";
 });
